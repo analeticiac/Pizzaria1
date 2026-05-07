@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pizzaria Moderna</title>
+
+<style>
+body {
+font-family: Arial;
+margin: 0;
+background: linear-gradient(135deg,#000,#8b0000);
+color: white;
+}
+
+header {
+background: #000;
+padding: 15px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+border-bottom: 2px solid #8b0000;
+}
+
+nav a {
+color: white;
+margin: 0 10px;
+text-decoration: none;
+cursor: pointer;
+}
+
+section {
+display: none;
+padding: 20px;
+}
+
+.active {
+display: block;
+}
+
+h2 {
+color: #ff4d4d;
+}
+
+.grid {
+display: grid;
+grid-template-columns: repeat(2,1fr);
+gap: 15px;
+}
+
+.card {
+background: #111;
+padding: 15px;
+border-radius: 10px;
+text-align: center;
+border: 1px solid #8b0000;
+}
+
+.card img {
+width: 100%;
+border-radius: 10px;
+margin-bottom: 10px;
+}
+
+button {
+background: #8b0000;
+color: white;
+border: none;
+padding: 10px;
+cursor: pointer;
+margin-top: 10px;
+}
+
+.form-box {
+width: 300px;
+margin: 40px auto;
+background: #111;
+padding: 20px;
+border-radius: 10px;
+border: 1px solid #8b0000;
+}
+
+input, select {
+width: 100%;
+padding: 10px;
+margin: 10px 0;
+}
+
+.carrinho-box {
+background: rgba(0,0,0,0.6);
+padding: 20px;
+border-radius: 10px;
+margin-top: 20px;
+border: 1px solid #8b0000;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🍕 Pizzaria Moderna</h1>
+<nav>
+<a onclick="mostrar('login')">Login</a>
+<a onclick="mostrar('cadastro')">Cadastro</a>
+<a onclick="mostrar('menu')">Cardápio</a>
+</nav>
+</header>
+
+<!-- LOGIN -->
+<section id="login" class="active">
+<div class="form-box">
+<h2>Login</h2>
+<input type="text" id="loginUser" placeholder="Usuário">
+<input type="password" id="loginPass" placeholder="Senha">
+<button onclick="login()">Entrar</button>
+</div>
+</section>
+
+<!-- CADASTRO -->
+<section id="cadastro">
+<div class="form-box">
+<h2>Cadastro</h2>
+<input type="text" id="cadUser" placeholder="Usuário">
+<input type="password" id="cadPass" placeholder="Senha">
+<button onclick="cadastro()">Cadastrar</button>
+</div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+
+<h2>🍕 Pizzas Salgadas</h2>
+
+<div class="grid">
+
+<div class="card">
+<img src="calabresa.jpg"
+<h3>Calabresa</h3>
+<p>Calabresa, cebola e orégano.</p>
+<p>R$ 35,00</p>
+<button onclick="add('Calabresa',35)">Adicionar</button>
+</div>
+
+<div class="card">
+<img src="portuguesa.jpg">
+<h3>Portuguesa</h3>
+<p>Presunto, ovos, cebola e azeitona.</p>
+<p>R$ 38,00</p>
+<button onclick="add('Portuguesa',38)">Adicionar</button>
+</div>
+
+<div class="card">
+<img src="frango com catupiry.avif">
+<h3>Frango Catupiry</h3>
+<p>Frango desfiado com catupiry.</p>
+<p>R$ 37,00</p>
+<button onclick="add('Frango Catupiry',37)">Adicionar</button>
+</div>
+
+<div class="card">
+<img src="mussarela.jpg">
+<h3>Muçarela</h3>
+<p>Queijo, molho de tomate e orégano.</p>
+<p>R$ 32,00</p>
+<button onclick="add('Muçarela',32)">Adicionar</button>
+</div>
+
+<div class="card">
+<img src="Margherita.jpg">
+<h3>Margherita</h3>
+<p>Tomate, manjericão e muçarela.</p>
+<p>R$ 36,00</p>
+<button onclick="add('Margherita',36)">Adicionar</button>
+</div>
+
+<div class="card">
+<img src="4 queijos.avif">
+<h3>Quatro Queijos</h3>
+<p>Muçarela, provolone, gorgonzola e catupiry.</p>
+<p>R$ 42,00</p>
+<button onclick="add('Quatro Queijos',42)">Adicionar</button>
+</div>
+
+<div class="card">
+<img src="Pepperoni.webp">
+<h3>Pepperoni</h3>
+<p>Salame picante com muçarela.</p>
+<p>R$ 40,00</p>
+<button onclick="add('Pepperoni',40)">Adicionar</button>
+</div>
+
+<div class="card">
+<img src="atum.jpg">
+<h3>Atum</h3>
+<p>Atum com cebola.</p>
+<p>R$ 39,00</p>
+<button onclick="add('Atum',39)">Adicionar</button>
+</div>
+
+<div class="card">
+<img src="Lombo Canadense.webp">
+<h3>Lombo Canadense</h3>
+<p>Lombo defumado com catupiry.</p>
+<p>R$ 43,00</p>
+<button onclick="add('Lombo Canadense',43)">Adicionar</button>
+</div>
+
+<div class="card">
+<img src="Alho-Poró com Bacon.jpg">
+<h3>Alho-Poró com Bacon</h3>
+<p>Bacon crocante com alho-poró.</p>
+<p>R$ 45,00</p>
+<button onclick="add('Alho-Poró com Bacon',45)">Adicionar</button>
+</div>
+
+</div>
+
+<h2>🍫 Pizzas Doces</h2>
+
+<div class="grid">
+
+<div class="card">
+<img src="Chocolate com Morango.avif">
+<h3>Chocolate com Morango</h3>
+<p>Chocolate com morangos frescos.</p>
+<p>R$ 41,00</p>
+<button onclick="add('Chocolate com Morango',41)">Adicionar</button>
+</div>
+
+<div class="card">
+<img src="Brigadeiro">
+<h3>Brigadeiro</h3>
+<p>Chocolate com granulado.</p>
+<p>R$ 39,00</p>
+<button onclick="add('Brigadeiro',39)">Adicionar</button>
+</div>
+
+<div class="card">
+<img src="https://source.unsplash.com/400x300/?pizza,banana">
+<h3>Banana com Canela</h3>
+<p>Banana, leite condensado e canela.</p>
+<p>R$ 37,00</p>
+<button onclick="add('Banana com Canela',37)">Adicionar</button>
+</div>
+
+<div class="card">
+<img src="https://source.unsplash.com/400x300/?pizza,goiabada">
+<h3>Romeu e Julieta</h3>
+<p>Queijo e goiabada.</p>
+<p>R$ 38,00</p>
+<button onclick="add('Romeu e Julieta',38)">Adicionar</button>
+</div>
+
+<div class="card">
+<img src="https://source.unsplash.com/400x300/?pizza,caramel">
+<h3>Doce de Leite</h3>
+<p>Doce de leite cremoso.</p>
+<p>R$ 40,00</p>
+<button onclick="add('Doce de Leite',40)">Adicionar</button>
+</div>
+
+<div class="card">
+<img src="https://source.unsplash.com/400x300/?pizza,nutella">
+<h3>Nutella com Morango</h3>
+<p>Nutella com morango.</p>
+<p>R$ 45,00</p>
+<button onclick="add('Nutella com Morango',45)">Adicionar</button>
+</div>
+
+<div class="card">
+<img src="https://source.unsplash.com/400x300/?pizza,coco">
+<h3>Prestígio</h3>
+<p>Chocolate com coco.</p>
+<p>R$ 40,00</p>
+<button onclick="add('Prestígio',40)">Adicionar</button>
+</div>
+
+<div class="card">
+<img src="https://source.unsplash.com/400x300/?pizza,white-chocolate">
+<h3>Banana Nevada</h3>
+<p>Banana com chocolate branco.</p>
+<p>R$ 38,00</p>
+<button onclick="add('Banana Nevada',38)">Adicionar</button>
+</div>
+
+<div class="card">
+<img src="https://source.unsplash.com/400x300/?pizza,dessert">
+<h3>Cartola</h3>
+<p>Banana, queijo e canela.</p>
+<p>R$ 36,00</p>
+<button onclick="add('Cartola',36)">Adicionar</button>
+</div>
+
+<div class="card">
+<img src="https://source.unsplash.com/400x300/?pizza,ovomaltine">
+<h3>Ovomaltine</h3>
+<p>Chocolate com Ovomaltine crocante.</p>
+<p>R$ 42,00</p>
+<button onclick="add('Ovomaltine',42)">Adicionar</button>
+</div>
+
+</div>
+
+<div class="carrinho-box">
+<h2>🛒 Carrinho</h2>
+<ul id="lista"></ul>
+<h3>Total: R$ <span id="total">0</span></h3>
+
+<h3>Pagamento</h3>
+<select>
+<option>Pix</option>
+<option>Cartão</option>
+<option>Dinheiro</option>
+</select>
+
+<button onclick="finalizar()">Finalizar Pedido</button>
+</div>
+
+</section>
+
+<script>
+let carrinho = [];
+
+function mostrar(secao){
+document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
+document.getElementById(secao).classList.add("active");
+}
+
+function add(nome,preco){
+carrinho.push({nome,preco});
+atualizar();
+}
+
+function atualizar(){
+let lista = document.getElementById("lista");
+let total = 0;
+lista.innerHTML = "";
+
+carrinho.forEach(item=>{
+let li = document.createElement("li");
+li.textContent = item.nome + " - R$ " + item.preco;
+lista.appendChild(li);
+total += item.preco;
+});
+
+document.getElementById("total").innerText = total;
+}
+
+function finalizar(){
+alert("Pedido realizado! Total: R$ " + document.getElementById("total").innerText);
+carrinho = [];
+atualizar();
+}
+
+function cadastro(){
+localStorage.setItem("user", document.getElementById("cadUser").value);
+localStorage.setItem("pass", document.getElementById("cadPass").value);
+alert("Cadastro realizado!");
+}
+
+function login(){
+let u = document.getElementById("loginUser").value;
+let p = document.getElementById("loginPass").value;
+
+if(u === localStorage.getItem("user") && p === localStorage.getItem("pass")){
+alert("Login ok!");
+mostrar("menu");
+}else{
+alert("Erro no login");
+}
+}
+</script>
+
+</body>
+</html>
